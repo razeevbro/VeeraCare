@@ -9,6 +9,23 @@
   --brand-navy: #001f61;
 }
 
+/* In-page anchors (Learn More, nav links): smooth scroll + room below sticky navbar */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

@@ -1,8 +1,24 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+function smoothScrollToHash(href: string, e: MouseEvent<HTMLAnchorElement>) {
+  if (!href.startsWith("#")) return;
+  const id = href.slice(1);
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  const instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({
+    behavior: instant ? "auto" : "smooth",
+    block: "start",
+  });
+  window.history.pushState(null, "", href);
+}
 
 /** Navbar / hero — primary brand button, white label, arrow in bordered tile */
 export function GetAccessSolid({
@@ -40,8 +56,9 @@ export function LearnMoreBrand({
   className?: string;
 }) {
   return (
-    <Link
+    <a
       href={href}
+      onClick={(e) => smoothScrollToHash(href, e)}
       className={cn(
         "group inline-flex items-center gap-2.5 bg-brand px-6 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-black/25 transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-xl hover:shadow-black/30 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
         className
@@ -54,7 +71,7 @@ export function LearnMoreBrand({
           strokeWidth={2}
         />
       </span>
-    </Link>
+    </a>
   );
 }
 

@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { RemoteImage as Image } from "@/components/media/RemoteImage";
 import { Reveal } from "@/components/motion/Reveal";
 
-/** Reference photography (Unsplash) — illustrates each expertise area */
+/** Reference photography (Unsplash / Pexels) — illustrates each expertise area */
 const expertise = [
   {
     label: "Housemaids & Domestic Care",
@@ -48,7 +48,7 @@ const expertise = [
     label: "Security Personnel",
     icon: Shield,
     image:
-      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=82",
+      "https://images.pexels.com/photos/34585117/pexels-photo-34585117.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
 ] as const;
 

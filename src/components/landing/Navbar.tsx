@@ -47,35 +47,33 @@ export function Navbar() {
           : "border-neutral-200 bg-white"
       )}
     >
-      <nav className="relative mx-auto flex h-[72px] max-w-[1320px] items-center px-4 md:h-20 md:px-8">
-        <div className="hidden flex-1 items-center justify-end gap-7 lg:flex lg:pr-28">
-          {leftLinks.map((l) => (
-            <Link key={l.href} href={l.href} className={desktopNavLink}>
-              {l.label}
-            </Link>
-          ))}
-        </div>
-
+      <nav className="relative flex h-[72px] w-full items-center gap-4 pl-3 pr-4 md:h-20 md:gap-6 md:pl-5 md:pr-8 lg:pl-6">
         <Link
           href="#top"
-          className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center px-2 py-1 transition-all duration-300 hover:opacity-90 motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.99]"
+          className="flex shrink-0 items-center py-1 transition-all duration-300 hover:opacity-90 motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.99]"
           aria-label="Veera Care — home"
         >
           <VeeraLogo variant="nav" tone="dark" className="h-[34px] md:h-10" />
         </Link>
 
-        <div className="hidden flex-1 items-center justify-start gap-7 lg:flex lg:pl-28">
+        <div className="hidden flex-1 items-center justify-center gap-6 xl:gap-7 lg:flex">
+          {leftLinks.map((l) => (
+            <Link key={l.href} href={l.href} className={desktopNavLink}>
+              {l.label}
+            </Link>
+          ))}
           {rightLinks.map((l) => (
             <Link key={l.href} href={l.href} className={desktopNavLink}>
               {l.label}
             </Link>
           ))}
-          <div className="ml-auto shrink-0">
-            <GetAccessSolid />
-          </div>
         </div>
 
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <div className="hidden shrink-0 lg:block">
+          <GetAccessSolid />
+        </div>
+
+        <div className="ml-auto flex shrink-0 items-center gap-2 lg:hidden">
           <GetAccessSolid className="scale-[0.92] px-3 py-2 text-[10px]" />
           <button
             type="button"
