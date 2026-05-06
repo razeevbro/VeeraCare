@@ -1,9 +1,31 @@
+import type { Metadata } from "next";
 import { PreHeader } from "@/components/landing/PreHeader";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { CTAForm } from "@/components/cta/CTAForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { RemoteImage } from "@/components/media/RemoteImage";
+
+export const metadata: Metadata = {
+  title: "Direct Hire | Skilled Onsite Talent Recruitment | VeeraCare",
+  description:
+    "VeeraCare direct hire delivers structured screening and reliable matching for skilled onsite roles—technicians, maintenance, janitorial teams, porters, and construction manpower—so hospitals, clinics, startups, and worksites can hire with confidence and reduce churn.",
+  openGraph: {
+    title: "Direct Hire — Skilled Onsite Talent Recruitment",
+    description:
+      "Structured screening and matching for skilled onsite hires across facilities, care settings, and active worksites.",
+    type: "website",
+    siteName: "VeeraCare",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
+        width: 1200,
+        height: 630,
+        alt: "Skilled onsite technician at work",
+      },
+    ],
+  },
+};
 
 export default function DirectHirePage() {
   return (
@@ -14,8 +36,8 @@ export default function DirectHirePage() {
         <section className="relative overflow-hidden border-b border-neutral-200 bg-black">
           <div className="absolute inset-0">
             <RemoteImage
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2000&q=82"
-              alt="Professional team planning and management"
+              src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=2000&q=82"
+              alt="Skilled onsite technician at work"
               fill
               className="object-cover opacity-80"
               sizes="100vw"
@@ -28,8 +50,8 @@ export default function DirectHirePage() {
                 Direct Hire
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
-                We act as your recruitment middleman—screening, verifying, and matching dependable
-                candidates so your organization can hire with confidence and reduce churn.
+                We act as your recruitment partner screening, verifying, and matching dependable
+                onsite candidates so your organization can hire with confidence and reduce churn.
               </p>
             </Reveal>
           </div>
@@ -44,8 +66,8 @@ export default function DirectHirePage() {
                     Structured screening & matching
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                    We evaluate candidates for role fit, attitude, and reliability—then shortlist
-                    profiles that match your work environment, shift needs, and expectations.
+                    We evaluate candidates for role fit, attitude, and reliability then shortlist
+                    profiles that match your work environment, shift needs, and onsite expectations.
                   </p>
                 </div>
               </Reveal>
@@ -57,7 +79,7 @@ export default function DirectHirePage() {
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
                     Direct hire should feel predictable. We verify backgrounds where applicable,
-                    confirm availability, and set clear job expectations before interviews—so your
+                    confirm availability, and set clear job expectations before interviews so your
                     time is spent only on serious candidates.
                   </p>
                 </div>
@@ -72,8 +94,8 @@ export default function DirectHirePage() {
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
                     We understand roles that require trust, discipline, and consistency. Our process
-                    prioritizes candidates who can work respectfully in care settings and management
-                    facilities while following your standards.
+                    prioritizes candidates who can work respectfully in care settings, facilities,
+                    and active worksites while following your standards.
                   </p>
                 </div>
               </Reveal>
@@ -85,8 +107,8 @@ export default function DirectHirePage() {
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
                     Our work connects unemployed individuals to stable jobs. When organizations hire
-                    through VeeraCare, they gain reliable workers—and the community gains meaningful
-                    employment opportunities.
+                    through VeeraCare, they gain reliable onsite workers—and the community gains
+                    meaningful employment opportunities.
                   </p>
                 </div>
               </Reveal>

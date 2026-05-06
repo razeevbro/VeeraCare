@@ -61,7 +61,7 @@ const models = [
   {
     title: "Direct Recruitment (Connecting Talent)",
     body:
-      "Acting as your recruitment middleman, we help hospitals, IT firms, and businesses find vetted, capable individuals ready to work, bridging the gap between talent and opportunity.",
+      "Acting as your recruitment partner, we help hospitals, clinics, and businesses find vetted, capable individuals ready to work—bridging the gap between talent and opportunity.",
   },
 ] as const;
 

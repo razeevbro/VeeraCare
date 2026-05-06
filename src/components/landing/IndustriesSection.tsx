@@ -6,15 +6,11 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   Building2,
-  Briefcase,
   ChevronLeft,
   ChevronRight,
-  Cpu,
   Factory,
-  GraduationCap,
+  HardHat,
   HeartPulse,
-  Store,
-  Truck,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
@@ -26,42 +22,42 @@ function scrollToContact(e: MouseEvent<HTMLAnchorElement>) {
 
 const industries = [
   {
-    key: "technology",
-    title: "Technology",
-    gradient: "from-brand-navy via-[#2d4ea8] to-brand",
-    icon: Cpu,
-    body:
-      "Software developers, IT support, and technical specialists—contract, contract-to-hire, or direct hire for offices and innovation teams.",
-    jobs: [
-      "Full-stack & front-end developers",
-      "IT support & service desk",
-      "QA, DevOps, and cloud admins",
-      "Data & business analysts",
-      "Technical project coordinators",
-    ],
-  },
-  {
     key: "healthcare",
-    title: "Healthcare",
+    title: "Healthcare Facilities",
     gradient: "from-brand via-[#5f7cff] to-[#a9bcff]",
     icon: HeartPulse,
     body:
-      "Clinical staff, health IT, environmental services, and support roles—with credentialing and audit-ready workflows.",
+      "Clinical support, environmental services (EVS), infection prevention aides, and facility maintenance with audit ready workflows.",
     jobs: [
-      "Nurses, MAs, and patient access",
-      "Health IT & EHR support",
-      "EVS / infection-prevention aides",
-      "Lab & imaging assistants",
-      "Revenue cycle & scheduling support",
+      "Clinical support and patient assistance",
+      "EVS / infection prevention aides",
+      "Facility maintenance coverage",
+      "Supply and transport support",
+      "Front desk and visitor coordination",
+    ],
+  },
+  {
+    key: "construction",
+    title: "Construction & Manpower",
+    gradient: "from-[#1a3a8f] via-brand to-[#9eb6ff]",
+    icon: HardHat,
+    body:
+      "Skilled trades support, site helpers, heavy machinery operators, and safety certified labor for building and infrastructure projects.",
+    jobs: [
+      "Skilled trades support",
+      "Site helpers and material handling",
+      "Heavy machinery operators",
+      "Safety certified labor",
+      "Site cleanup and logistics support",
     ],
   },
   {
     key: "manufacturing",
-    title: "Manufacturing",
+    title: "Manufacturing & Industrial",
     gradient: "from-brand-navy via-brand to-[#7c94ff]",
     icon: Factory,
     body:
-      "Line operators, logistics, maintenance helpers, and skilled trades alongside engineering support.",
+      "Machine operators, warehouse and material handlers, and skilled maintenance technicians to support throughput, uptime, and safe operations.",
     jobs: [
       "Machine operators & assemblers",
       "Warehouse & material handlers",
@@ -72,77 +68,17 @@ const industries = [
   },
   {
     key: "facilities",
-    title: "Facilities & workplaces",
+    title: "Facilities & Workplaces",
     gradient: "from-brand via-[#5f7cff] to-[#d6deff]",
     icon: Building2,
     body:
-      "Janitorial, porters, grounds, security-aware reception, and general maintenance—supervised routes with dependable coverage.",
+      "Janitorial, day porters, grounds maintenance, and event setup for commercial and corporate spaces.",
     jobs: [
       "Janitorial & day porters",
       "Grounds & light maintenance",
-      "Front desk & visitor management",
-      "Event setup / swing-shift coverage",
-      "Supervisors & quality spot-checks",
-    ],
-  },
-  {
-    key: "retail",
-    title: "Retail & hospitality",
-    gradient: "from-[#1a3a8f] via-brand to-[#9eb6ff]",
-    icon: Store,
-    body:
-      "Customer-facing teams for stores, hotels, and venues—consistent staffing for peaks, nights, and weekends.",
-    jobs: [
-      "Sales associates & cashiers",
-      "Stockers & receiving clerks",
-      "Guest services & concierge",
-      "Banquet / catering support",
-      "Loss-prevention aware floor staff",
-    ],
-  },
-  {
-    key: "education",
-    title: "Education & public sector",
-    gradient: "from-brand-navy via-[#3558c9] to-brand",
-    icon: GraduationCap,
-    body:
-      "Support staff for schools, colleges, and civic sites—background-check friendly roles with reliable attendance.",
-    jobs: [
-      "Classroom & teacher aides",
-      "Custodial for campuses",
-      "Administrative & registrar support",
-      "After-school and athletics aides",
-      "Municipal clerks & front-window staff",
-    ],
-  },
-  {
-    key: "logistics",
-    title: "Logistics & distribution",
-    gradient: "from-brand via-brand-navy to-[#6b84ff]",
-    icon: Truck,
-    body:
-      "Drivers’ helpers, loaders, and DC associates—fast onboarding for seasonal ramps and new lanes.",
-    jobs: [
-      "Pickers, packers, and loaders",
-      "Forklift & reach-truck (certified)",
-      "Last-mile helpers & route support",
-      "Inventory cycle counters",
-      "DOT-aware dispatch assistants",
-    ],
-  },
-  {
-    key: "professional",
-    title: "Professional & financial",
-    gradient: "from-brand via-brand-navy to-[#b4c5ff]",
-    icon: Briefcase,
-    body:
-      "Office operations for banks, insurers, and corporate HQ—contract and contract-to-hire bench strength.",
-    jobs: [
-      "Customer service & call center",
-      "Loan processing & underwriting aides",
-      "HR coordinators & onboarding",
-      "Accounting clerks & AP/AR",
-      "Executive assistants & admins",
+      "Event setup / swing shift coverage",
+      "Supervisors & quality spotchecks",
+      "Porters and move support",
     ],
   },
 ];

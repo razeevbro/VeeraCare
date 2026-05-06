@@ -29,7 +29,7 @@ type Card = {
 const cards: Card[] = [
   {
     title: "Contract staffing",
-    body: "Flexible talent for projects and peaks—with safety, and attendance rigor for onsite roles.",
+    body: "Flexible talent for projects and peaks with safety, and attendance rigor for onsite roles.",
     icons: (
       <>
         <FileText className="h-5 w-5" strokeWidth={1.35} />
@@ -39,19 +39,19 @@ const cards: Card[] = [
   },
   {
     title: "Direct hire & embedded teams",
-    body: "Permanent placements and blended pods that share milestones, acceptance criteria, and transparent reporting.",
+    body: "Permanent placements and dependable staffing lanes that support your standards, schedules, and onsite expectations.",
     icons: <UsersRound className="h-5 w-5" strokeWidth={1.35} />,
     image: landingImages.services[1],
   },
   {
-    title: "Workforce intelligence",
-    body: "Forecast labor demand, route coverage, and SLA risk—with dashboards your ops leaders actually use.",
+    title: "Workforce planning",
+    body: "Forecast labor demand, shift coverage, and staffing risk with clear reporting for operations and facilities leadership.",
     icons: <Briefcase className="h-5 w-5" strokeWidth={1.35} />,
     image: landingImages.services[2],
   },
   {
     title: "Managed services",
-    body: "Run recurring operations: help desks, engineering pools, janitorial roster, and routing site coverage—with documented SLAs and accountable leads.",
+    body: "Run recurring operations: janitorial rosters, porter routes, maintenance coverage, and site support with documented service levels and accountable leads.",
     icons: (
       <span className="flex gap-1">
         <KeyRound className="h-5 w-5" strokeWidth={1.35} />
@@ -62,13 +62,13 @@ const cards: Card[] = [
   },
   {
     title: "Employer of record",
-    body: "Payroll, benefits, and compliance for distributed or onsite teams while your managers retain day-to-day direction—from coders to custodial staff.",
+    body: "Payroll, benefits, and compliance for onsite teams while your managers retain day-to-day direction from skilled technicians to facilities support staff.",
     icons: <Clock className="h-5 w-5" strokeWidth={1.35} />,
     image: landingImages.services[4],
   },
   {
     title: "Hire · Train · Deploy",
-    body: "Upskill cohorts for safety-critical or technical tasks—developer certifications, maintenance licensure, or standardized cleaning protocols.",
+    body: "Upskill cohorts for safety critical and onsite tasks orientation, role discipline, maintenance readiness, and standardized cleaning protocols.",
     icons: <GraduationCap className="h-5 w-5" strokeWidth={1.35} />,
     image: landingImages.services[5],
   },
@@ -84,8 +84,8 @@ export function WhatWeDo() {
             What we deliver
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-neutral-700">
-            Facilities programs and staffing models designed for hybrid technical teams and onsite
-            crews—under one governance model.
+            Facilities programs and staffing models designed for onsite operations delivered with
+            consistent supervision, safety orientation, and accountability.
           </p>
         </Reveal>
 

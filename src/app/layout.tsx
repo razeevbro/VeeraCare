@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Veera Care | Facilities management & staffing",
   description:
-    "Veera Care provides facilities management and staffing for employers nationwide—from software developers and technicians to janitorial and maintenance teams.",
+    "Veera Care provides facilities management and staffing for employers nationwide connecting skilled onsite technicians, construction and manpower crews, janitorial teams, porters, and maintenance staff.",
 };
 
 export default function RootLayout({

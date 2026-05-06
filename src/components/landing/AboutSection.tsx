@@ -21,7 +21,7 @@ export function AboutSection() {
             <div className="relative min-h-[11rem] overflow-hidden rounded-2xl border border-white/10 md:min-h-[13rem]">
               <Image
                 src={landingImages.aboutPortrait}
-                alt="VeeraCare leadership"
+                alt="Onsite facilities workforce"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 45vw, 22vw"
@@ -30,7 +30,7 @@ export function AboutSection() {
             <div className="relative row-span-2 min-h-[14rem] overflow-hidden rounded-2xl border border-white/10 md:min-h-[24rem]">
               <Image
                 src={landingImages.aboutServer}
-                alt="Data center operations"
+                alt="Onsite workforce and jobsite operations"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 45vw, 28vw"
@@ -61,11 +61,11 @@ export function AboutSection() {
             <div className="mt-6 space-y-5 text-base leading-relaxed text-white/80 md:text-lg">
               <p>
                 VeeraCare delivers facilities management support and staffing for employers who need
-                both highly skilled hires—software developers, engineers, and technicians—and
-                dependable onsite teams including janitors, porters, and maintenance staff.
+                dependable onsite teams: skilled technicians, construction and manpower crews,
+                janitors, porters, and maintenance staff.
               </p>
               <p>
-                From short-term coverage to employer-of-record programs, we align schedules, safety
+                From short term coverage to employer of record programs, we align schedules, safety
                 expectations, and compliance so your buildings stay operational and your workforce
                 stays accountable.
               </p>

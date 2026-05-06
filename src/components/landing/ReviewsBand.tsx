@@ -8,7 +8,7 @@ import { landingImages } from "@/config/media";
 const reviews = [
   {
     quote:
-      "VeeraCare tightened our facilities program and filled technical roles in the same breath—finally one throat to choke.",
+      "VeeraCare tightened our facilities program and stabilized onsite coverage finally one accountable partner.",
     name: "Dir. Operations",
     org: "National retailer",
     avatar: landingImages.reviews[0],
@@ -22,9 +22,9 @@ const reviews = [
   },
   {
     quote:
-      "One partner for desks and buildings—routing, coverage, and SLA reporting we can actually defend in audits.",
+      "One partner for facilities and field teams routing, coverage, and documented standards we can defend in audits.",
     name: "Head of Workplace",
-    org: "Tech services firm",
+    org: "Facilities services firm",
     avatar: landingImages.trustAvatars[2],
   },
 ] as const;

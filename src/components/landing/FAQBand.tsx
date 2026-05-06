@@ -6,16 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
-    q: "Can you staff both technical roles and janitorial or maintenance jobs?",
-    a: "Yes, VeeraCare recruits and assigns software developers, technicians, and analysts alongside janitors, porters, grounds staff, and general maintenance—often under one governance model so coverage stays predictable.",
+    q: "Can you staff both skilled onsite roles and facilities teams?",
+    a: "Yes. VeeraCare supports skilled technicians and onsite trades alongside janitors, porters, grounds staff, and maintenance crews often under one coordinated staffing model so coverage stays predictable.",
   },
   {
     q: "How quickly can we fill urgent facilities or cleaning shifts?",
-    a: "Most active accounts receive same-day or next-day bench coverage once routes and safety expectations are documented; technical searches typically move on a structured slate timeline your team approves.",
+    a: "Most active accounts receive same day or next day bench coverage once routes, roles, and safety expectations are documented. For longer lead roles, we move on a structured shortlist timeline your team approves.",
   },
   {
-    q: "Do you support multiple locations or hybrid technical teams?",
-    a: "We support multi-site facilities programs, centralized payroll, and remote or hybrid tech contracts—with onboarding packs tailored to desk workers and onsite crews.",
+    q: "Do you support multiple locations and rotating shifts?",
+    a: "Yes. We support multi-site facilities programs, centralized coordination, and shift-based coverage with onboarding tailored to active worksites and operational standards.",
   },
 ];
 

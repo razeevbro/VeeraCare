@@ -39,7 +39,7 @@ export function Hero() {
           >
             <span className="text-brand">Staffing every skill</span>
             <br />
-            <span className="text-neutral-900">from desk to custodial</span>
+            <span className="text-neutral-900">from the ground up</span>
           </motion.h1>
 
           <motion.p
@@ -48,9 +48,9 @@ export function Hero() {
             transition={{ duration: 0.52, delay: 0.12, ease }}
             className="mt-6 max-w-xl text-base leading-relaxed text-neutral-700 md:text-lg"
           >
-            VeeraCare connects employers with highly skilled people—like software developers and
-            technicians—and with essential onsite talent including janitors, porters, and
-            maintenance crews—so your facilities stay compliant, clean, and fully covered.
+            VeeraCare connects employers with highly skilled technical labor and essential onsite
+            talent including specialized technicians, construction crews, janitors, porters, and
+            maintenance staff so your facilities stay compliant, clean, and fully operational.
           </motion.p>
 
           <motion.div
@@ -73,7 +73,7 @@ export function Hero() {
                 ))}
               </div>
               <p className="max-w-[14rem] text-sm font-medium leading-snug text-neutral-600">
-                Trusted for technical hires and facilities teams alike.
+                Trusted for skilled onsite teams and facilities coverage alike.
               </p>
             </div>
           </motion.div>
@@ -88,7 +88,7 @@ export function Hero() {
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] border border-neutral-200 shadow-2xl shadow-neutral-900/15 md:aspect-[3/4]">
             <Image
               src={landingImages.heroPortrait}
-              alt="Professional on assignment"
+              alt="Skilled onsite professional on assignment"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 90vw, 45vw"

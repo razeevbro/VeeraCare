@@ -18,7 +18,7 @@ const points = [
   {
     icon: UserCheck,
     title: "Trained & Vetted Pros",
-    body: "We strictly assess the skills and experience of our staff to ensure high-quality service.",
+    body: "We strictly assess the skills and experience of our staff to ensure high quality service.",
   },
   {
     icon: RefreshCw,
@@ -60,7 +60,7 @@ export function SecurityPoints({ className }: SecurityPointsProps) {
               Security you can count on
             </h2>
             <p className="mt-4 text-base leading-relaxed text-neutral-700 md:text-lg">
-              Clear vetting, skilled placements, and managed employment—so your facility or home stays
+              Clear vetting, skilled placements, and managed employment so your facility or home stays
               covered with confidence.
             </p>
           </div>

@@ -14,10 +14,10 @@ const stats = [
   {
     line1: (
       <>
-        $<CountUp end={70} suffix="+" className="tabular-nums" />
+        $<CountUp end={512} suffix="k" className="tabular-nums" />
       </>
     ),
-    line2: "Million in client payroll facilitated",
+    line2: "Thousands in client payroll facilitated",
   },
   {
     line1: (
@@ -86,7 +86,7 @@ export function ByTheNumbers() {
               </h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-white/75 md:text-lg">
                 Results across offices, industrial sites, healthcare environments, and
-                public-facing facilities—from technical placements to janitorial and maintenance
+                public facing facilities from technical placements to janitorial and maintenance
                 coverage.
               </p>
               <div className="mt-10">

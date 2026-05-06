@@ -31,7 +31,7 @@ export function DEISection() {
               <div className="flex gap-3">
                 <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand" />
                 <p className="text-sm font-medium leading-relaxed text-neutral-800">
-                  Full pipelines from the front desk to the shop floor—we track fill-quality, safety
+                  Full pipelines from the front desk to the shop floor we track fill quality, safety
                   incidents, and retention across skilled and essential roles alike.
                 </p>
               </div>
@@ -56,13 +56,13 @@ export function DEISection() {
             </h2>
             <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-700 md:text-lg">
               <p>
-                Respect matters for software engineers and for janitorial crews alike. VeeraCare
-                applies consistent sourcing standards, safety orientation, and escalation paths so
-                every worker is valued on site.
+                Respect matters for skilled technicians and janitorial crews alike. VeeraCare
+                applies consistent sourcing standards and safety orientation so every worker is
+                supported, prepared, and valued on site.
               </p>
               <p>
                 Employers receive clear roster visibility, diversity metrics by job family, and
-                supervisor-ready reporting—without sacrificing speed on daily fills.
+                supervisor ready reporting without sacrificing speed on daily fills.
               </p>
             </div>
             <div className="mt-10">

@@ -1,9 +1,31 @@
+import type { Metadata } from "next";
 import { PreHeader } from "@/components/landing/PreHeader";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { CTAForm } from "@/components/cta/CTAForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { RemoteImage } from "@/components/media/RemoteImage";
+
+export const metadata: Metadata = {
+  title: "Contract Staffing | Managed Onsite Workforce Supply | VeeraCare",
+  description:
+    "VeeraCare contract staffing provides managed onsite workforce supply—hire, train, and deploy technicians, construction manpower, janitorial teams, porters, and maintenance staff with clear supervision, coverage continuity, and compliance-ready standards.",
+  openGraph: {
+    title: "Contract Staffing — Managed Onsite Workforce Supply",
+    description:
+      "Hire, train, and deploy managed onsite teams with reliable coverage and supervision for hospitals, clinics, startups, and construction sites.",
+    type: "website",
+    siteName: "VeeraCare",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+        width: 1200,
+        height: 630,
+        alt: "Construction workforce on an active site",
+      },
+    ],
+  },
+};
 
 export default function ContractStaffingPage() {
   return (
@@ -14,8 +36,8 @@ export default function ContractStaffingPage() {
         <section className="relative overflow-hidden border-b border-neutral-200 bg-black">
           <div className="absolute inset-0">
             <RemoteImage
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=82"
-              alt="Team collaboration in a professional setting"
+              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=82"
+              alt="Construction workforce on an active site"
               fill
               className="object-cover opacity-80"
               sizes="100vw"
@@ -28,8 +50,8 @@ export default function ContractStaffingPage() {
                 Contract Staffing
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
-                We hire, train, and manage the workforce—then supply reliable staff to your home,
-                care unit, or management facility with clear supervision and strong accountability.
+                We hire, train, and manage the workforce then supply reliable onsite staff to your
+                facility or worksite with clear supervision and strong accountability.
               </p>
             </Reveal>
           </div>
@@ -57,9 +79,9 @@ export default function ContractStaffingPage() {
                     Managed supervision on the ground
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                    Our model focuses on reliability and consistent behavior. We set expectations,
-                    brief staff on your standards, and coordinate replacements when needed—so you
-                    stay covered during busy shifts and urgent requirements.
+                    Our model prioritizes reliable coverage and consistent onsite standards. We set
+                    expectations, brief staff on your requirements, and coordinate replacements when
+                    needed so you stay covered during busy shifts and urgent needs.
                   </p>
                 </div>
               </Reveal>
@@ -72,9 +94,9 @@ export default function ContractStaffingPage() {
                     Reliable staffing for facilities
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                    We support care and management environments where punctuality, hygiene, and
-                    professionalism matter. You get staff who arrive ready to work—with clear roles
-                    and day-to-day coordination.
+                    We support hospitals, clinics, workplaces, and active sites where punctuality,
+                    safety, and professionalism matter. You get staff who arrive ready to work with
+                    clear roles and day-to-day coordination.
                   </p>
                 </div>
               </Reveal>
@@ -85,9 +107,9 @@ export default function ContractStaffingPage() {
                     Meaningful jobs, steady outcomes
                   </h2>
                   <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                    Every placement creates stable income for unemployed individuals. We focus on
+                    Every placement creates stable income for hardworking people. We focus on
                     long-term employability through training, discipline, and real work experience
-                    across our staffing categories.
+                    across technical labor and facilities staffing categories.
                   </p>
                 </div>
               </Reveal>

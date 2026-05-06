@@ -47,9 +47,9 @@ export function CTAForm({
   className,
   id = "contact",
   title = "Contact VeeraCare",
-  subtitle = "Need dependable staff—or are you a worker looking for work with us? Choose who you are below and fill in your details. We’ll route your inquiry to the right team.",
-  imageSrc = "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=82",
-  imageAlt = "VeeraCare staffing coordination and teamwork",
+  subtitle = "Need dependable staff or are you a worker looking for work with us? Choose who you are below and fill in your details. We’ll route your inquiry to the right team.",
+  imageSrc = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1400&q=82",
+  imageAlt = "Skilled onsite technician at work",
 }: CTAFormProps) {
   const initial = useMemo<CTARequestInput>(
     () => ({
@@ -134,7 +134,7 @@ export function CTAForm({
                     </p>
                     <p className="mt-2 text-base leading-relaxed text-white/90">
                       Facilities and homes rely on us for managed staffing. Workers rely on us for
-                      fair placements and steady roles—tell us which side you&apos;re on in the form.
+                      fair placements and steady roles. Tell us which side you&apos;re on in the form.
                     </p>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ export function CTAForm({
                           I&apos;m a worker
                         </span>
                         <span className="mt-2 block text-sm leading-snug text-neutral-600">
-                          Share your trade and when you&apos;re available—we&apos;ll follow up.
+                          Share your trade and when you&apos;re available, we&apos;ll follow up.
                         </span>
                       </button>
                     </div>
@@ -331,7 +331,7 @@ export function CTAForm({
                     >
                       {status === "success" && (
                         <span className="font-semibold text-green-700">
-                          Thanks — we received your inquiry and’ll be in touch shortly.
+                          Thanksyou, we received your inquiry and’ll be in touch shortly.
                         </span>
                       )}
                       {status === "error" && (
