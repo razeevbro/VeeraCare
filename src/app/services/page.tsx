@@ -5,17 +5,286 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { CTAForm } from "@/components/cta/CTAForm";
 import { Reveal } from "@/components/motion/Reveal";
-import { RemoteImage } from "@/components/media/RemoteImage";
 import { cn } from "@/lib/utils";
+import { serviceNeededGroups, type ServiceNeeded } from "@/lib/validations/cta";
+import { ServiceCard, type ServiceCardDetails } from "@/components/services/ServiceCard";
+
+/** Stable CDN URLs — avoid source.unsplash.com (frequent 5xx). */
+const roleDetails: Record<
+  ServiceNeeded,
+  ServiceCardDetails
+> = {
+  Housemaid: {
+    description: "Trusted domestic support managed for consistency, discretion, and respectful care at home.",
+    image:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Domestic housekeeping and home care",
+    badges: ["Residential", "Managed", "Verified"],
+  },
+  "Nanny/Babysitter": {
+    description: "Reliable childcare coverage—screened caregivers aligned to your household routines and schedules.",
+    image:
+      "https://images.pexels.com/photos/3662849/pexels-photo-3662849.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Childcare and babysitting",
+    badges: ["Childcare", "Flexible hours", "Household fit"],
+  },
+  "Elderly Caretaker": {
+    description: "Compassionate assistance for seniors—patient, dependable support with dignity and clear reporting.",
+    image:
+      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Senior care and elderly assistance",
+    badges: ["Care", "Dependable", "Supervised"],
+  },
+  "Personal Cook": {
+    description: "Household and small-team cooking—menus, hygiene standards, and predictable meal coverage.",
+    image:
+      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Cook preparing food in a kitchen",
+    badges: ["Household", "Hygiene", "Schedules"],
+  },
+  "Private Driver": {
+    description: "Professional driving support—punctual chauffeurs screened for safety and professionalism.",
+    image:
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Professional driving on the road",
+    badges: ["Chauffeur", "Safety", "Discretion"],
+  },
+  "Deep Cleaning": {
+    description: "Intensive turnover and detailed cleans—high-touch standards for homes and facility zones.",
+    image:
+      "https://images.pexels.com/photos/4239039/pexels-photo-4239039.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Deep cleaning of interior spaces",
+    badges: ["Turnover", "Detail-oriented", "SLA-ready"],
+  },
+  "Janitorial Staff": {
+    description: "Daily facility upkeep and porter-style support—consistent attendance and supervision.",
+    image:
+      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Janitorial cleaning in a facility",
+    badges: ["Facilities", "Day/night", "Accountable"],
+  },
+  Plumber: {
+    description: "Onsite plumbing labor and trade-adjacent support under your direction and safety protocols.",
+    image:
+      "https://images.unsplash.com/photo-1749532125405-70950966b0e5?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1749532125405-70950966b0e5?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Plumber repairing pipes and fixtures in a bathroom",
+    badges: ["Trades support", "Onsite", "Compliance-aware"],
+  },
+  Electrician: {
+    description: "Electrical support crews screened for credentials alignment—dependable coverage for sites and facilities.",
+    image:
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Electrician working with wiring",
+    badges: ["Electrical", "Safety-first", "Experienced"],
+  },
+  "Gardener/Landscaper": {
+    description: "Groundskeeping and landscaping labor—seasonal upkeep, curb appeal, and outdoor maintenance.",
+    image:
+      "https://images.pexels.com/photos/169523/pexels-photo-169523.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    fallbackImage:
+      "https://images.pexels.com/photos/169523/pexels-photo-169523.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    imageAlt: "Landscaping and gardening",
+    badges: ["Outdoors", "Seasonal", "Hands-on"],
+  },
+  "General Laborer": {
+    description: "Site-ready manpower for moving materials, prep work, and general onsite assistance.",
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Construction workers on a building site",
+    badges: ["Manpower", "Site-ready", "Briefed crews"],
+  },
+  Mason: {
+    description: "Masonry support aligned to your foreman—brick/block labor with trades discipline.",
+    image:
+      "https://images.pexels.com/photos/8961399/pexels-photo-8961399.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Brick masonry construction",
+    badges: ["Masonry", "Structural", "Worksite"],
+  },
+  Carpenter: {
+    description: "Carpentry helpers and skilled woodworkers for fabrication, fit-out, and onsite carpentry tasks.",
+    image:
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Carpenter woodworking",
+    badges: ["Wood trades", "Fit-out", "Precision"],
+  },
+  Painter: {
+    description: "Painting crews for interiors and facades—prep, finish standards, and clean worksite habits.",
+    image:
+      "https://images.pexels.com/photos/5797919/pexels-photo-5797919.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    fallbackImage:
+      "https://images.pexels.com/photos/5797919/pexels-photo-5797919.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    imageAlt: "Painter applying paint",
+    badges: ["Finish quality", "Prep & coat", "Site-safe"],
+  },
+  "Waitstaff/Catering": {
+    description: "Front-of-house and banquet-style service—guest-ready presentation and coordinated teamwork.",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Restaurant service and dining",
+    badges: ["Hospitality", "Banquets", "Guest-ready"],
+  },
+  Bartender: {
+    description: "Bar coverage for events and venues—hygiene, pace, and professional guest interaction.",
+    image:
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Bartender preparing drinks",
+    badges: ["Bar service", "Events", "RSA-aligned hire"],
+  },
+  "Event Setup Crew": {
+    description: "Load-in/load-out and staging labor—rigging-adjacent support briefed for your run of show.",
+    image:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Event crew setting up a venue",
+    badges: ["Staging", "Load-in/out", "Uniform-ready"],
+  },
+  "General Security Guard": {
+    description: "Uniformed presence for sites and facilities—access control, patrols, and incident readiness.",
+    image:
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Security guard on duty",
+    badges: ["Patrols", "Access control", "Professional"],
+  },
+  "VIP Security": {
+    description: "Discreet close-protection adjacent staffing—polished presence aligned to premium hospitality.",
+    image:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Corporate building security presence",
+    badges: ["VIP-ready", "Discreet", "Executive venues"],
+  },
+  Bouncer: {
+    description: "Venue door coverage—crowd management support trained for calm, firm professionalism.",
+    image:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1772858001159-5302ca34986f?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Crowd queued outside an entertainment venue at night",
+    badges: ["Nightlife", "Crowd aware", "Firm & calm"],
+  },
+  "Office Boy/Peon": {
+    description: "Office runners and general helpers—mail, pantry support, errands, and light facility tasks.",
+    image:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Modern office workspace",
+    badges: ["Corporate", "Support", "Daily ops"],
+  },
+  Receptionist: {
+    description: "Front-desk coverage—greetings, visitor coordination, and polished first impressions.",
+    image:
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80",
+    fallbackImage:
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Business reception and front desk",
+    badges: ["Front desk", "Scheduling", "Professional tone"],
+  },
+  "Delivery Courier": {
+    description: "Last-mile support for parcels and documents—route discipline and accountable handoffs.",
+    image:
+      "https://images.pexels.com/photos/7706453/pexels-photo-7706453.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    fallbackImage:
+      "https://images.pexels.com/photos/6867348/pexels-photo-6867348.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    imageAlt: "Courier delivering packages",
+    badges: ["Last-mile", "Accountable", "Time-sensitive"],
+  },
+};
+
+const sectionMeta: Record<
+  keyof typeof serviceNeededGroups,
+  { id: string; eyebrow: string; intro: string; tint: string; ring: string }
+> = {
+  "Domestic & Care": {
+    id: "domestic-care",
+    eyebrow: "Homes & households",
+    intro:
+      "Domestic staffing built around trust—consistent schedules, clear expectations, and supervised placements.",
+    tint: "from-brand/[0.09] via-white to-white",
+    ring: "ring-brand/15",
+  },
+  "Cleaning & Facilities": {
+    id: "cleaning-facilities",
+    eyebrow: "Facilities & trades-adjacent",
+    intro:
+      "Facility upkeep and specialty onsite roles—clean teams and skilled labor aligned to your standards.",
+    tint: "from-emerald-500/[0.09] via-white to-white",
+    ring: "ring-emerald-500/15",
+  },
+  Construction: {
+    id: "construction",
+    eyebrow: "Worksites & builds",
+    intro:
+      "Dependable manual labor and trade support for construction programs—safety-minded crews with attendance focus.",
+    tint: "from-amber-500/[0.09] via-white to-white",
+    ring: "ring-amber-500/20",
+  },
+  "Events & Hospitality": {
+    id: "events-hospitality",
+    eyebrow: "Guests & venues",
+    intro:
+      "Hospitality-forward staffing for events and dining programs—presentation-ready teams briefed for busy service.",
+    tint: "from-rose-500/[0.07] via-white to-white",
+    ring: "ring-rose-400/20",
+  },
+  Security: {
+    id: "security",
+    eyebrow: "Protection & presence",
+    intro:
+      "Security staffing from everyday patrols to premium venues—trained professionalism and clear escalation paths.",
+    tint: "from-neutral-900/[0.06] via-white to-white",
+    ring: "ring-neutral-900/10",
+  },
+  "Corporate Support": {
+    id: "corporate-support",
+    eyebrow: "Offices & operations",
+    intro:
+      "Day-to-day workplace coverage—front desk, runners, and courier support that keeps teams moving.",
+    tint: "from-sky-500/[0.07] via-white to-white",
+    ring: "ring-sky-500/20",
+  },
+};
 
 export const metadata: Metadata = {
-  title: "Services | Vetted Onsite Workforce & Facilities Staffing | VeeraCare",
+  title: "Services | Domestic, Facility & Manual Labor Staffing | VeeraCare",
   description:
-    "Explore VeeraCare services for vetted, supervised onsite staffing—housemaids, cleaners, skilled technicians, construction manpower, event staff, and security personnel. Built for homes, care facilities, and physical workplaces that require reliable coverage and clear standards.",
+    "Explore VeeraCare domestic care, cleaning & facilities, construction labor, hospitality, security, and corporate support staffing—managed, onsite roles with clear standards.",
   openGraph: {
-    title: "VeeraCare Services — Vetted Onsite Workforce",
+    title: "VeeraCare Services — Comprehensive Onsite Staffing",
     description:
-      "Vetted and supervised staffing for homes, care facilities, and workplaces—housemaids, cleaners, technicians, construction, event, and security personnel.",
+      "Domestic, facility, construction, hospitality, security, and corporate support roles—reliable onsite staffing.",
     type: "website",
     siteName: "VeeraCare",
     images: [
@@ -29,52 +298,11 @@ export const metadata: Metadata = {
   },
 };
 
-const services = [
-  {
-    title: "Housemaid",
-    description:
-      "Trained domestic staff you can trust managed and supported for consistent care at home.",
-    image:
-      "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1400&q=82",
-  },
-  {
-    title: "House Cleaner",
-    description:
-      "Professional cleaning teams for homes and facilities reliable schedules and strong supervision.",
-    image:
-      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1400&q=82",
-  },
-  {
-    title: "Technician",
-    description:
-      "Skilled technicians for repairs and maintenance screened, punctual, and accountable.",
-    image:
-      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1400&q=82",
-  },
-  {
-    title: "Construction",
-    description:
-      "Dependable workforce for site support helping teams stay productive and on time.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=82",
-  },
-  {
-    title: "Event",
-    description:
-      "On-ground event staff for setup, support, and guest flow briefed, uniform-ready, and managed.",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=82",
-  },
-  {
-    title: "Security Personnel",
-    description:
-      "Disciplined security staff for venues and facilities trained, supervised, and responsive.",
-    image:
-      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1400&q=82",
-  },
-] as const;
-
 export default function ServicesPage() {
+  const sections = Object.entries(serviceNeededGroups) as Array<
+    [keyof typeof serviceNeededGroups, readonly ServiceNeeded[]]
+  >;
+
   return (
     <>
       <PreHeader />
@@ -91,13 +319,14 @@ export default function ServicesPage() {
                 Services
               </h1>
               <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-neutral-700 md:text-lg">
-                VeeraCare supplies reliable workers for homes, care settings, and management
-                facilities creating meaningful jobs while keeping your operations fully staffed.
+                VeeraCare supplies managed onsite staffing across domestic households, facilities,
+                worksites, venues, and workplaces—comprehensive coverage with supervision you can
+                trust.
               </p>
             </Reveal>
 
             <Reveal delay={0.06}>
-              <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-4 md:mt-12">
+              <div className="mx-auto mt-10 flex max-w-5xl flex-wrap items-center justify-center gap-3 md:mt-12">
                 <Link
                   href="/solutions/contract-staffing"
                   className="group inline-flex items-center gap-2 rounded-[4px] border border-neutral-300 bg-white px-5 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-black transition-all duration-300 hover:border-brand hover:text-brand hover:shadow-md motion-safe:hover:-translate-y-0.5"
@@ -112,57 +341,80 @@ export default function ServicesPage() {
                   Direct hire
                   <span className="h-1.5 w-1.5 rounded-full bg-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </Link>
+                {sections.map(([label]) => {
+                  const meta = sectionMeta[label];
+                  return (
+                    <a
+                      key={label}
+                      href={`#${meta.id}`}
+                      className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-neutral-900 transition-all duration-300 hover:border-brand hover:text-brand hover:shadow-md motion-safe:hover:-translate-y-0.5"
+                    >
+                      {label}
+                      <span className="h-1.5 w-1.5 rounded-full bg-neutral-900/20" />
+                    </a>
+                  );
+                })}
               </div>
             </Reveal>
           </div>
         </section>
 
-        <section className="bg-white py-14 md:py-20">
-          <div className="mx-auto max-w-[1320px] px-4 md:px-8">
-            <Reveal>
-              <h2 className="text-center text-3xl font-bold uppercase tracking-tight text-neutral-950 md:text-4xl">
-                Core worker categories
-              </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-relaxed text-neutral-700 md:text-lg">
-                Each role is recruited, verified, and supported so you get consistent attendance,
-                clear supervision, and staff who respect your standards.
-              </p>
-            </Reveal>
+        {sections.map(([label, roles], sectionIndex) => {
+          const meta = sectionMeta[label];
+          const band =
+            sectionIndex % 2 === 0 ? "bg-white" : "bg-gradient-to-b from-[#f6f8ff] to-white";
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 md:mt-14">
-              {services.map((s, i) => (
-                <Reveal key={s.title} delay={i * 0.06} y={18}>
-                  <article
-                  className={cn(
-                    "group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-lg transition-all duration-300 hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/15",
-                    "motion-safe:hover:-translate-y-1"
-                  )}
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
-                    <RemoteImage
-                      src={s.image}
-                      alt={s.title}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                  </div>
-
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                    <h3 className="text-lg font-bold uppercase tracking-tight text-white md:text-xl">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/85">
-                      {s.description}
+          return (
+            <section
+              key={label}
+              id={meta.id}
+              className={cn(band, "scroll-mt-24 border-b border-neutral-200/70 py-14 md:scroll-mt-28 md:py-20")}
+            >
+              <div className="mx-auto max-w-[1320px] px-4 md:px-8">
+                <Reveal>
+                  <div className="mx-auto max-w-3xl text-center">
+                    <p
+                      className={cn(
+                        "mx-auto inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-neutral-900 ring-1",
+                        meta.ring
+                      )}
+                    >
+                      {meta.eyebrow}
+                      <span className="h-1.5 w-1.5 rounded-full bg-brand/70" />
+                    </p>
+                    <h2 className="mt-5 text-3xl font-bold uppercase tracking-tight text-neutral-950 md:text-4xl">
+                      {label}
+                    </h2>
+                    <p className="mt-4 text-base leading-relaxed text-neutral-700 md:text-lg">
+                      {meta.intro}
                     </p>
                   </div>
-                  </article>
                 </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+
+                <Reveal delay={0.06}>
+                  <div
+                    className={cn(
+                      "relative mt-10 overflow-hidden rounded-3xl border border-neutral-200 bg-gradient-to-b p-6 md:mt-14 md:p-10",
+                      meta.tint
+                    )}
+                  >
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(0,0,0,0.05),transparent)]"
+                      aria-hidden
+                    />
+                    <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                      {roles.map((role, i) => (
+                        <Reveal key={role} delay={i * 0.04} y={16}>
+                          <ServiceCard title={role} details={roleDetails[role]} />
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </section>
+          );
+        })}
 
         <CTAForm className="bg-gradient-to-b from-white to-[#f6f8ff]" />
 
@@ -171,4 +423,3 @@ export default function ServicesPage() {
     </>
   );
 }
-

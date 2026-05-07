@@ -1,12 +1,34 @@
 import { z } from "zod";
 
+/** Optgroup labels + role labels exactly as shown in the CTA dropdown. */
+export const serviceNeededGroups = {
+  "Domestic & Care": [
+    "Housemaid",
+    "Nanny/Babysitter",
+    "Elderly Caretaker",
+    "Personal Cook",
+    "Private Driver",
+  ],
+  "Cleaning & Facilities": [
+    "Deep Cleaning",
+    "Janitorial Staff",
+    "Plumber",
+    "Electrician",
+    "Gardener/Landscaper",
+  ],
+  Construction: ["General Laborer", "Mason", "Carpenter", "Painter"],
+  "Events & Hospitality": ["Waitstaff/Catering", "Bartender", "Event Setup Crew"],
+  Security: ["General Security Guard", "VIP Security", "Bouncer"],
+  "Corporate Support": ["Office Boy/Peon", "Receptionist", "Delivery Courier"],
+} as const;
+
 export const serviceNeededOptions = [
-  "Housemaid",
-  "House Cleaner",
-  "Technician",
-  "Construction",
-  "Event",
-  "Security Personnel",
+  ...serviceNeededGroups["Domestic & Care"],
+  ...serviceNeededGroups["Cleaning & Facilities"],
+  ...serviceNeededGroups.Construction,
+  ...serviceNeededGroups["Events & Hospitality"],
+  ...serviceNeededGroups.Security,
+  ...serviceNeededGroups["Corporate Support"],
 ] as const;
 
 export type ServiceNeeded = (typeof serviceNeededOptions)[number];
@@ -40,4 +62,3 @@ export const ctaRequestSchema = z
   });
 
 export type CTARequestInput = z.infer<typeof ctaRequestSchema>;
-

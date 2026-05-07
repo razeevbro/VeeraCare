@@ -9,23 +9,25 @@ import {
   Clock,
   FileText,
   GraduationCap,
-  KeyRound,
-  Settings,
   UsersRound,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
 import { ServicesDualActions } from "@/components/landing/PromoCtas";
-import { landingImages } from "@/config/media";
 import { staggerContainer, staggerItem } from "@/lib/motion-variants";
+
+const unsplash = (photoPath: string) =>
+  `https://images.unsplash.com/${photoPath}?auto=format&fit=crop&w=1200&q=82`;
 
 type Card = {
   title: string;
   body: string;
   icons: ReactNode;
   image: string;
+  imageAlt: string;
 };
 
+/** Distinct, role-relevant photography per solution (no duplicate URLs). */
 const cards: Card[] = [
   {
     title: "Contract staffing",
@@ -35,42 +37,36 @@ const cards: Card[] = [
         <FileText className="h-5 w-5" strokeWidth={1.35} />
       </>
     ),
-    image: landingImages.services[0],
+    image: unsplash("photo-1621905252507-b35492cc74b4"),
+    imageAlt: "Onsite technician in safety gear at a facility",
   },
   {
     title: "Direct hire & embedded teams",
     body: "Permanent placements and dependable staffing lanes that support your standards, schedules, and onsite expectations.",
     icons: <UsersRound className="h-5 w-5" strokeWidth={1.35} />,
-    image: landingImages.services[1],
+    image: unsplash("photo-1522071820081-009f0129c71c"),
+    imageAlt: "Team collaborating in a professional workplace",
   },
   {
     title: "Workforce planning",
     body: "Forecast labor demand, shift coverage, and staffing risk with clear reporting for operations and facilities leadership.",
     icons: <Briefcase className="h-5 w-5" strokeWidth={1.35} />,
-    image: landingImages.services[2],
-  },
-  {
-    title: "Managed services",
-    body: "Run recurring operations: janitorial rosters, porter routes, maintenance coverage, and site support with documented service levels and accountable leads.",
-    icons: (
-      <span className="flex gap-1">
-        <KeyRound className="h-5 w-5" strokeWidth={1.35} />
-        <Settings className="h-5 w-5" strokeWidth={1.35} />
-      </span>
-    ),
-    image: landingImages.services[3],
+    image: unsplash("photo-1553877522-43269d4ea984"),
+    imageAlt: "Operations planning session with laptop and notes",
   },
   {
     title: "Employer of record",
     body: "Payroll, benefits, and compliance for onsite teams while your managers retain day-to-day direction from skilled technicians to facilities support staff.",
     icons: <Clock className="h-5 w-5" strokeWidth={1.35} />,
-    image: landingImages.services[4],
+    image: unsplash("photo-1450101499163-c8848c66ca85"),
+    imageAlt: "Business paperwork and compliance documents on a desk",
   },
   {
     title: "Hire · Train · Deploy",
     body: "Upskill cohorts for safety critical and onsite tasks orientation, role discipline, maintenance readiness, and standardized cleaning protocols.",
     icons: <GraduationCap className="h-5 w-5" strokeWidth={1.35} />,
-    image: landingImages.services[5],
+    image: unsplash("photo-1524178232363-1fb2b075b655"),
+    imageAlt: "Training session or classroom instruction",
   },
 ];
 
@@ -126,7 +122,7 @@ export function WhatWeDo() {
               <div className="relative mt-auto aspect-[16/10] w-full">
                 <Image
                   src={card.image}
-                  alt=""
+                  alt={card.imageAlt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover/card:scale-[1.03]"
                   sizes="(max-width: 768px) 100vw, 33vw"

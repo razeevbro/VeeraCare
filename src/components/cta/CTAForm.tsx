@@ -8,6 +8,7 @@ import { RemoteImage } from "@/components/media/RemoteImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  serviceNeededGroups,
   serviceNeededOptions,
   type CTARequestInput,
 } from "@/lib/validations/cta";
@@ -262,10 +263,18 @@ export function CTAForm({
                         }))
                       }
                     >
-                      {serviceNeededOptions.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
+                      {(
+                        Object.entries(serviceNeededGroups) as Array<
+                          [keyof typeof serviceNeededGroups, readonly (typeof serviceNeededOptions)[number][]]
+                        >
+                      ).map(([label, options]) => (
+                        <optgroup key={label} label={label}>
+                          {options.map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
+                        </optgroup>
                       ))}
                     </select>
                   </div>

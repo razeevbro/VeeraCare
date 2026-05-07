@@ -11,6 +11,7 @@ import {
   Factory,
   HardHat,
   HeartPulse,
+  Home,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
@@ -53,17 +54,17 @@ const industries = [
   },
   {
     key: "manufacturing",
-    title: "Manufacturing & Industrial",
-    gradient: "from-brand-navy via-brand to-[#7c94ff]",
-    icon: Factory,
+    title: "Domestic & Residential Care",
+    gradient: "from-brand-navy via-brand to-[#d6deff]",
+    icon: Home,
     body:
-      "Machine operators, warehouse and material handlers, and skilled maintenance technicians to support throughput, uptime, and safe operations.",
+      "Managed domestic staffing for homes—trusted housemaids and professional cleaners with consistent schedules and quality oversight.",
     jobs: [
-      "Machine operators & assemblers",
-      "Warehouse & material handlers",
-      "Maintenance technicians",
-      "Quality & safety inspectors",
-      "Production leads & team trainers",
+      "Housemaids for day-to-day home support",
+      "Professional house cleaning and deep cleans",
+      "Move-in / move-out cleaning coverage",
+      "Supervised teams with checklists",
+      "Recurring schedules you can count on",
     ],
   },
   {
