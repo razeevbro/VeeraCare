@@ -157,22 +157,28 @@ export function Footer() {
           <div className="grid gap-8 text-sm md:grid-cols-3 md:gap-6">
             <div>
               <p className="font-semibold uppercase tracking-wide text-white/55">Call us</p>
-              <p className="mt-2 font-medium">+1 (555) 555-0199</p>
+              <p className="mt-2 font-medium">+971 4288 9597</p>
             </div>
             <div>
               <p className="font-semibold uppercase tracking-wide text-white/55">Email us</p>
               <p className="mt-2 font-medium">
                 <a
-                  href="mailto:hello@veeracare.com"
+                  href="mailto:admin@veerafm.com"
                   className="transition-colors duration-200 hover:text-brand"
                 >
-                  hello@veeracare.com
+                  admin@veerafm.com
                 </a>
               </p>
             </div>
             <div>
               <p className="font-semibold uppercase tracking-wide text-white/55">Visit us</p>
-              <p className="mt-2 font-medium text-white/85">Remote first · UAE</p>
+              <p className="mt-2 font-medium text-white/85">
+                Al Khaleej Center, Office No: MB31
+                <br />
+                Near Sharaf DG Metro, Bur Dubai, UAE
+                <br />
+                United Arab Emirates
+              </p>
             </div>
           </div>
 
