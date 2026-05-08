@@ -19,7 +19,7 @@ export function DEISection() {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-neutral-200 shadow-xl md:aspect-[3/4]">
               <Image
-                src={landingImages.deiSticky}
+                src="/images/sections/dei-sticky.png"
                 alt="Inclusive workplace workshop"
                 fill
                 className="object-cover object-center"

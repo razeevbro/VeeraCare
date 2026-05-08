@@ -118,18 +118,6 @@ export function ServicesDualActions({ className }: { className?: string }) {
           />
         </span>
       </Link>
-      <Link
-        href="#about"
-        className="group inline-flex items-center gap-2.5 border border-neutral-300 bg-white px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-black transition-all duration-300 ease-out hover:border-brand hover:text-brand hover:shadow-md motion-safe:hover:-translate-y-0.5"
-      >
-        Meet our team
-        <span className="flex h-8 w-8 items-center justify-center bg-brand transition-colors duration-300 group-hover:bg-brand-navy">
-          <ArrowRight
-            className="h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-0.5"
-            strokeWidth={2}
-          />
-        </span>
-      </Link>
     </div>
   );
 }

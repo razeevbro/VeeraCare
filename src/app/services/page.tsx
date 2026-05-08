@@ -24,16 +24,16 @@ const roleDetails: Record<
     badges: ["Residential", "Managed", "Verified"],
   },
   "Nanny/Babysitter": {
-    description: "Reliable childcare coverage—screened caregivers aligned to your household routines and schedules.",
+    description: "Reliable childcare coverage screened caregivers aligned to your household routines and schedules.",
     image:
-      "https://images.pexels.com/photos/3662849/pexels-photo-3662849.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://images.unsplash.com/photo-1651688729724-bafbf0935462?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1651688729724-bafbf0935462?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Childcare and babysitting",
     badges: ["Childcare", "Flexible hours", "Household fit"],
   },
   "Elderly Caretaker": {
-    description: "Compassionate assistance for seniors—patient, dependable support with dignity and clear reporting.",
+    description: "Compassionate assistance for seniors patient, dependable support with dignity and clear reporting.",
     image:
       "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -42,7 +42,7 @@ const roleDetails: Record<
     badges: ["Care", "Dependable", "Supervised"],
   },
   "Personal Cook": {
-    description: "Household and small-team cooking—menus, hygiene standards, and predictable meal coverage.",
+    description: "Household and small team cooking menus, hygiene standards, and predictable meal coverage.",
     image:
       "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -51,34 +51,34 @@ const roleDetails: Record<
     badges: ["Household", "Hygiene", "Schedules"],
   },
   "Private Driver": {
-    description: "Professional driving support—punctual chauffeurs screened for safety and professionalism.",
+    description: "Professional driving support punctual chauffeurs screened for safety and professionalism.",
     image:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/private-driver.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/private-driver.png",
     imageAlt: "Professional driving on the road",
     badges: ["Chauffeur", "Safety", "Discretion"],
   },
   "Deep Cleaning": {
-    description: "Intensive turnover and detailed cleans—high-touch standards for homes and facility zones.",
+    description: "Intensive turnover and detailed cleans high-touch standards for homes and facility zones.",
     image:
-      "https://images.pexels.com/photos/4239039/pexels-photo-4239039.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "/images/services/deep-cleaning.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/deep-cleaning.png",
     imageAlt: "Deep cleaning of interior spaces",
     badges: ["Turnover", "Detail-oriented", "SLA-ready"],
   },
   "Janitorial Staff": {
-    description: "Daily facility upkeep and porter-style support—consistent attendance and supervision.",
+    description: "Daily facility upkeep and porter style support consistent attendance and supervision.",
     image:
-      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/janitorial-staff.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/janitorial-staff.png",
     imageAlt: "Janitorial cleaning in a facility",
     badges: ["Facilities", "Day/night", "Accountable"],
   },
   Plumber: {
-    description: "Onsite plumbing labor and trade-adjacent support under your direction and safety protocols.",
+    description: "Onsite plumbing labor and trade adjacent support under your direction and safety protocols.",
     image:
       "https://images.unsplash.com/photo-1749532125405-70950966b0e5?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -87,7 +87,7 @@ const roleDetails: Record<
     badges: ["Trades support", "Onsite", "Compliance-aware"],
   },
   Electrician: {
-    description: "Electrical support crews screened for credentials alignment—dependable coverage for sites and facilities.",
+    description: "Electrical support crews screened for credentials alignment dependable coverage for sites and facilities.",
     image:
       "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -96,7 +96,7 @@ const roleDetails: Record<
     badges: ["Electrical", "Safety-first", "Experienced"],
   },
   "Gardener/Landscaper": {
-    description: "Groundskeeping and landscaping labor—seasonal upkeep, curb appeal, and outdoor maintenance.",
+    description: "Groundskeeping and landscaping labor seasonal upkeep, curb appeal, and outdoor maintenance.",
     image:
       "https://images.pexels.com/photos/169523/pexels-photo-169523.jpeg?auto=compress&cs=tinysrgb&w=1600",
     fallbackImage:
@@ -105,7 +105,7 @@ const roleDetails: Record<
     badges: ["Outdoors", "Seasonal", "Hands-on"],
   },
   "General Laborer": {
-    description: "Site-ready manpower for moving materials, prep work, and general onsite assistance.",
+    description: "Site ready manpower for moving materials, prep work, and general onsite assistance.",
     image:
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -114,7 +114,7 @@ const roleDetails: Record<
     badges: ["Manpower", "Site-ready", "Briefed crews"],
   },
   Mason: {
-    description: "Masonry support aligned to your foreman—brick/block labor with trades discipline.",
+    description: "Masonry support aligned to your foreman brick/block labor with trades discipline.",
     image:
       "https://images.pexels.com/photos/8961399/pexels-photo-8961399.jpeg?auto=compress&cs=tinysrgb&w=1600",
     fallbackImage:
@@ -123,7 +123,7 @@ const roleDetails: Record<
     badges: ["Masonry", "Structural", "Worksite"],
   },
   Carpenter: {
-    description: "Carpentry helpers and skilled woodworkers for fabrication, fit-out, and onsite carpentry tasks.",
+    description: "Carpentry helpers and skilled woodworkers for fabrication, fit out, and onsite carpentry tasks.",
     image:
       "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -132,16 +132,16 @@ const roleDetails: Record<
     badges: ["Wood trades", "Fit-out", "Precision"],
   },
   Painter: {
-    description: "Painting crews for interiors and facades—prep, finish standards, and clean worksite habits.",
+    description: "Painting crews for interiors and facades prep, finish standards, and clean worksite habits.",
     image:
-      "https://images.pexels.com/photos/5797919/pexels-photo-5797919.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "/images/services/painter.png",
     fallbackImage:
-      "https://images.pexels.com/photos/5797919/pexels-photo-5797919.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "/images/services/painter.png",
     imageAlt: "Painter applying paint",
     badges: ["Finish quality", "Prep & coat", "Site-safe"],
   },
   "Waitstaff/Catering": {
-    description: "Front-of-house and banquet-style service—guest-ready presentation and coordinated teamwork.",
+    description: "Front-of-house and banquet style service—guest-ready presentation and coordinated teamwork.",
     image:
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -150,7 +150,7 @@ const roleDetails: Record<
     badges: ["Hospitality", "Banquets", "Guest-ready"],
   },
   Bartender: {
-    description: "Bar coverage for events and venues—hygiene, pace, and professional guest interaction.",
+    description: "Bar coverage for events and venues hygiene, pace, and professional guest interaction.",
     image:
       "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1600&q=80",
     fallbackImage:
@@ -159,56 +159,56 @@ const roleDetails: Record<
     badges: ["Bar service", "Events", "RSA-aligned hire"],
   },
   "Event Setup Crew": {
-    description: "Load-in/load-out and staging labor—rigging-adjacent support briefed for your run of show.",
+    description: "Load in/load out and staging labor rigging adjacent support briefed for your run of show.",
     image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/event-staff.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/event-staff.png",
     imageAlt: "Event crew setting up a venue",
     badges: ["Staging", "Load-in/out", "Uniform-ready"],
   },
   "General Security Guard": {
     description: "Uniformed presence for sites and facilities—access control, patrols, and incident readiness.",
     image:
-      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/general-security-guard.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/general-security-guard.png",
     imageAlt: "Security guard on duty",
     badges: ["Patrols", "Access control", "Professional"],
   },
   "VIP Security": {
     description: "Discreet close-protection adjacent staffing—polished presence aligned to premium hospitality.",
     image:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/vip-security.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/vip-security.png",
     imageAlt: "Corporate building security presence",
     badges: ["VIP-ready", "Discreet", "Executive venues"],
   },
   Bouncer: {
     description: "Venue door coverage—crowd management support trained for calm, firm professionalism.",
     image:
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/bouncer.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1772858001159-5302ca34986f?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/bouncer.png",
     imageAlt: "Crowd queued outside an entertainment venue at night",
     badges: ["Nightlife", "Crowd aware", "Firm & calm"],
   },
   "Office Boy/Peon": {
     description: "Office runners and general helpers—mail, pantry support, errands, and light facility tasks.",
     image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/office-boy-peon.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/office-boy-peon.png",
     imageAlt: "Modern office workspace",
     badges: ["Corporate", "Support", "Daily ops"],
   },
   Receptionist: {
     description: "Front-desk coverage—greetings, visitor coordination, and polished first impressions.",
     image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/receptionist.png",
     fallbackImage:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80",
+      "/images/services/receptionist.png",
     imageAlt: "Business reception and front desk",
     badges: ["Front desk", "Scheduling", "Professional tone"],
   },

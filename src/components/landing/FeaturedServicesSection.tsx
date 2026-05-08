@@ -11,6 +11,9 @@ import {
 import { motion } from "framer-motion";
 import { RemoteImage as Image } from "@/components/media/RemoteImage";
 import { Reveal } from "@/components/motion/Reveal";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /** Reference photography (Unsplash / Pexels) — illustrates each expertise area */
 const expertise = [
@@ -42,7 +45,7 @@ const expertise = [
     label: "Event Staff",
     icon: CalendarRange,
     image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=82",
+      "/images/services/event-staff.png",
   },
   {
     label: "Security Personnel",
@@ -128,6 +131,23 @@ export function FeaturedServicesSection() {
                   </div>
                 </motion.article>
               ))}
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/services"
+                className={cn(
+                  "group inline-flex items-center gap-2.5 bg-brand px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white shadow-md transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/30 motion-safe:hover:-translate-y-0.5"
+                )}
+              >
+                See all services
+                <span className="flex h-8 w-8 items-center justify-center bg-white transition-transform duration-300 group-hover:translate-x-0.5">
+                  <ArrowRight
+                    className="h-4 w-4 text-brand transition-transform duration-300 group-hover:translate-x-0.5"
+                    strokeWidth={2}
+                  />
+                </span>
+              </Link>
             </div>
           </div>
         </Reveal>

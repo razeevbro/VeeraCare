@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
-import { ServicesDualActions } from "@/components/landing/PromoCtas";
 import { staggerContainer, staggerItem } from "@/lib/motion-variants";
 
 const unsplash = (photoPath: string) =>
@@ -132,9 +131,6 @@ export function WhatWeDo() {
           ))}
         </motion.div>
 
-        <Reveal delay={0.12}>
-          <ServicesDualActions className="mt-14" />
-        </Reveal>
       </div>
     </section>
   );

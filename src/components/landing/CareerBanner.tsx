@@ -39,7 +39,7 @@ export function CareerBanner() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
               <ExploreOpeningsButton />
               <a
-                href="https://www.veerahr.com"
+                href="https://veerahr.com/job-portal"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 border border-white/40 bg-transparent px-6 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-md transition-all duration-300 ease-out hover:border-white/70 hover:bg-white/10 hover:shadow-xl hover:shadow-black/15 motion-safe:hover:-translate-y-0.5"
@@ -63,8 +63,8 @@ export function CareerBanner() {
             className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl border border-white/25 shadow-2xl md:mx-0 md:max-w-none"
           >
             <Image
-              src={landingImages.careerPortrait}
-              alt="VeeraCare team member"
+              src="/images/sections/career-portrait.png"
+              alt="Handshake between professionals"
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 70vw, 38vw"

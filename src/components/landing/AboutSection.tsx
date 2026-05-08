@@ -20,7 +20,7 @@ export function AboutSection() {
           >
             <div className="relative min-h-[11rem] overflow-hidden rounded-2xl border border-white/10 md:min-h-[13rem]">
               <Image
-                src={landingImages.aboutPortrait}
+                src="/images/sections/about-feature.png"
                 alt="Onsite facilities workforce"
                 fill
                 className="object-cover"

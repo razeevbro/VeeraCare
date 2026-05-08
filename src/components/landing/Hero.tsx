@@ -87,8 +87,8 @@ export function Hero() {
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] border border-neutral-200 shadow-2xl shadow-neutral-900/15 md:aspect-[3/4]">
             <Image
-              src={landingImages.heroPortrait}
-              alt="Skilled onsite professional on assignment"
+              src="/images/sections/hero-portrait.png"
+              alt="Reception professional at a front desk"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 90vw, 45vw"
