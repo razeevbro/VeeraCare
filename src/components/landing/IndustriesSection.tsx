@@ -8,7 +8,6 @@ import {
   Building2,
   ChevronLeft,
   ChevronRight,
-  Factory,
   HardHat,
   HeartPulse,
   Home,
@@ -16,12 +15,13 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
 import { smoothScrollToHash } from "@/components/landing/PromoCtas";
+import { useEffect } from "react";
 
 function scrollToContact(e: MouseEvent<HTMLAnchorElement>) {
   smoothScrollToHash("#contact", e);
 }
 
-const industries = [
+const fallbackIndustries = [
   {
     key: "healthcare",
     title: "Healthcare Facilities",
@@ -84,7 +84,15 @@ const industries = [
   },
 ];
 
-type Industry = (typeof industries)[number];
+type Industry = {
+  key: string;
+  title: string;
+  gradient: string;
+  iconName?: string;
+  icon: any;
+  body: string;
+  jobs: string[];
+};
 
 const DESKTOP_PAGE_SIZE = 4;
 
@@ -204,6 +212,7 @@ function LogoBars({ className }: { className?: string }) {
 }
 
 export function IndustriesSection() {
+  const [industries, setIndustries] = useState<Industry[]>(fallbackIndustries as any);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const totalSlides = industries.length;
   const pageLabel = String(carouselIndex + 1).padStart(2, "0");
@@ -211,6 +220,34 @@ export function IndustriesSection() {
   const desktopSlice = Array.from({ length: DESKTOP_PAGE_SIZE }, (_, i) =>
     industries[(carouselIndex + i) % industries.length]
   );
+
+  useEffect(() => {
+    const iconMap: Record<string, any> = {
+      HeartPulse,
+      HardHat,
+      Home,
+      Building2,
+    };
+    fetch("/api/public/industries", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((data: { items: any[] }) => {
+        if (!Array.isArray(data.items) || data.items.length === 0) return;
+        const next = data.items.map((it) => ({
+          key: String(it.key),
+          title: String(it.title),
+          gradient: String(it.gradient),
+          iconName: String(it.iconName ?? "Building2"),
+          icon: iconMap[String(it.iconName)] ?? Building2,
+          body: String(it.body),
+          jobs: Array.isArray(it.jobs)
+            ? it.jobs.map((x: unknown) => String(x))
+            : [],
+        }));
+        setIndustries(next);
+        setCarouselIndex(0);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <section

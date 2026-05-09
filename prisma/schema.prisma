@@ -82,3 +82,36 @@ model StaffRequest {
   @@index([email])
   @@index([inquiryType])
 }
+
+model CmsService {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  description String
+  imageUrl    String
+  imageAlt    String?
+  badges      Json?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([order])
+  @@index([title])
+}
+
+model CmsIndustry {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  title     String
+  gradient  String
+  iconName  String
+  body      String
+  jobs      Json
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([order])
+  @@index([title])
+}

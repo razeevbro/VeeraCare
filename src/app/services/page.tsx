@@ -8,6 +8,8 @@ import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { serviceNeededGroups, type ServiceNeeded } from "@/lib/validations/cta";
 import { ServiceCard, type ServiceCardDetails } from "@/components/services/ServiceCard";
+import { prisma } from "@/lib/prisma";
+import { seedServices, toServiceCardDetails } from "@/lib/cms/seed";
 
 /** Stable CDN URLs — avoid source.unsplash.com (frequent 5xx). */
 const roleDetails: Record<
@@ -298,7 +300,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServicesPage() {
+async function ensureSeeded() {
+  const count = await prisma.cmsService.count();
+  if (count > 0) return;
+  await prisma.cmsService.createMany({
+    data: seedServices.map((s) => ({
+      title: s.title,
+      category: s.category,
+      description: s.description,
+      imageUrl: s.imageUrl,
+      imageAlt: s.imageAlt ?? null,
+      badges: (s.badges as any) ?? null,
+      order: s.order ?? 0,
+    })),
+  });
+}
+
+export default async function ServicesPage() {
+  await ensureSeeded();
+  const dbServices = await prisma.cmsService.findMany({
+    orderBy: [{ order: "asc" }, { title: "asc" }],
+  });
+
+  type DbService = (typeof dbServices)[number];
+  const byCategory = new Map<string, DbService[]>();
+  for (const s of dbServices) {
+    const list = byCategory.get(s.category) ?? [];
+    list.push(s);
+    byCategory.set(s.category, list);
+  }
+
   const sections = Object.entries(serviceNeededGroups) as Array<
     [keyof typeof serviceNeededGroups, readonly ServiceNeeded[]]
   >;
@@ -364,6 +395,27 @@ export default function ServicesPage() {
           const band =
             sectionIndex % 2 === 0 ? "bg-white" : "bg-gradient-to-b from-[#f6f8ff] to-white";
 
+          const dbForCategory: DbService[] = byCategory.get(label as string) ?? [];
+          const dbByTitle = new Map<string, DbService>(
+            dbForCategory.map((s: DbService) => [s.title, s])
+          );
+
+          const cards: Array<{ title: string; details: ServiceCardDetails }> = [];
+
+          // Preserve the existing role order (so UI stays the same).
+          for (const role of roles) {
+            const db = dbByTitle.get(role);
+            if (db) cards.push({ title: role, details: toServiceCardDetails(db) });
+            else cards.push({ title: role, details: roleDetails[role] });
+          }
+
+          // Include any extra DB services in that category (not in the CTA list).
+          for (const s of dbForCategory) {
+            if (dbByTitle.has(s.title) && (roles as readonly string[]).includes(s.title)) continue;
+            if ((roles as readonly string[]).includes(s.title)) continue;
+            cards.push({ title: s.title, details: toServiceCardDetails(s) });
+          }
+
           return (
             <section
               key={label}
@@ -403,9 +455,9 @@ export default function ServicesPage() {
                       aria-hidden
                     />
                     <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                      {roles.map((role, i) => (
-                        <Reveal key={role} delay={i * 0.04} y={16}>
-                          <ServiceCard title={role} details={roleDetails[role]} />
+                      {cards.map((card, i) => (
+                        <Reveal key={card.title} delay={i * 0.04} y={16}>
+                          <ServiceCard title={card.title} details={card.details} />
                         </Reveal>
                       ))}
                     </div>

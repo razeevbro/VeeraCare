@@ -1,0 +1,43 @@
+import Link from "next/link";
+
+export default function AdminDashboardHomePage() {
+  return (
+    <div className="space-y-6">
+      <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-400">
+          Dashboard Home
+        </p>
+        <h1 className="mt-2 text-2xl font-bold tracking-tight">
+          Welcome to VeeraCare CMS
+        </h1>
+        <p className="mt-2 max-w-2xl text-sm text-neutral-300">
+          Use the sidebar to manage Services and Industries. Content is saved to
+          your database and reflected on the public site.
+        </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <Link
+          href="/admin/dashboard/services"
+          className="rounded-2xl border border-white/10 bg-neutral-900/40 p-6 transition hover:bg-neutral-900/60"
+        >
+          <h2 className="text-lg font-bold tracking-tight">Manage Services</h2>
+          <p className="mt-2 text-sm text-neutral-300">
+            Add, edit, or remove service cards shown on the website.
+          </p>
+        </Link>
+
+        <Link
+          href="/admin/dashboard/industries"
+          className="rounded-2xl border border-white/10 bg-neutral-900/40 p-6 transition hover:bg-neutral-900/60"
+        >
+          <h2 className="text-lg font-bold tracking-tight">Manage Industries</h2>
+          <p className="mt-2 text-sm text-neutral-300">
+            Update industry categories used across the homepage.
+          </p>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
